@@ -9,8 +9,17 @@ resource "aws_instance" "example" {
   vpc_security_group_ids = [aws_security_group.allow-ssh.id]
 
   # the public SSH key
-  key_name = aws_key_pair.mykey.key_name
+  key_name = var.KEY_NAME
+  
+  root_block_device {
+    volume_type           = "gp2"
+    volume_size           = "30"
+    delete_on_termination = "false"
+  }
+  
 }
+
+
 
 resource "aws_ebs_volume" "ebs-volume-1" {
   availability_zone = "eu-west-1a"
@@ -20,6 +29,7 @@ resource "aws_ebs_volume" "ebs-volume-1" {
     Name = "extra volume data"
   }
 }
+
 
 resource "aws_volume_attachment" "ebs-volume-1-attachment" {
   device_name = "/dev/xvdh"

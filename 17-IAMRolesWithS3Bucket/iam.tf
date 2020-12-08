@@ -35,8 +35,8 @@ resource "aws_iam_role_policy" "s3-mybucket-role-policy" {
               "s3:*"
             ],
             "Resource": [
-              "arn:aws:s3:::mybucket-nb1234",
-              "arn:aws:s3:::mybucket-nb1234/*"
+              "arn:aws:s3:::${var.BUCKET_NAME}",
+              "arn:aws:s3:::${var.BUCKET_NAME}/*"
             ]
         }
     ]

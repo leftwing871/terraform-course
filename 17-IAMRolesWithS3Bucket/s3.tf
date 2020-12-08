@@ -1,8 +1,8 @@
 resource "aws_s3_bucket" "b" {
-    bucket = "mybucket-jg1818"
+    bucket = "${var.BUCKET_NAME}"
     acl = "private"
 
     tags = {
-        Name = "mybucket-jg1818"
+        Name = "${var.BUCKET_NAME}"
     }
 }
